@@ -1,24 +1,42 @@
 require 'link_extractor'
 require 'spec_helper'
+require 'factory_girl'
 
 describe LinkExtractor do
-  #use_vcr_cassette "link_extractor", record: :new_episodes
-  #VCR.use_cassette("test") do
-  #end 
 
-  context "a url string is used to find the next page" do
-    before do
-      @page_url = "http://tynan.com/index.html"
-      @max_entries = 20
-      @post_matcher = "h1 a.title.fastload"
-      @next_page_matcher = "page/"
-      @starting_page = 1
-      @starting_page_incrementor = 1 
-      @site = LinkExtractor.new(@page_url, @max_entries, @post_matcher, 
-                                @next_page_matcher, @starting_page,
-                                @starting_page_incrementor)
+  FactoryGirl.find_definitions
+
+  #expect { @site.get_posts }.to raise_error
+
+  context "with a search via URL" do
+    before(:each) do
+      @site = FactoryGirl.build(:url_search)
     end
-   
+
+    describe "on a non-available page" do
+      it "should raise an error" do
+        expect { @site.get_posts }.to raise_error("URL not found")
+      end
+
+    end
+
+    describe "on an available page" do
+
+    end
+
+  end
+
+  context "with a search via CSS" do
+    before(:each) do
+      @site = FactoryGirl.build(:css_search)
+    end
+
+  end
+
+  context "beginning attributes" do
+    before(:each) do
+      @site = FactoryGirl.build(:url_search)
+    end
     subject { @site }
     it { should respond_to :link_list }
     it { should respond_to :get_posts }
@@ -34,13 +52,8 @@ describe LinkExtractor do
       @site.search_via_css?.should be_false
     end
 
-  end
-
-  context "the css is used to find the url for the next page" do
-
 
   end
-
 
 
 end
