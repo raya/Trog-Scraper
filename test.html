@@ -1,9 +1,0 @@
-page = Nokogiri::HTML(open(page_url))
-
-results = page.css('div#reference').css('a')
-puts results.text
-results.each do |result|
-  puts result.text
-  puts result[href]
-
-end
