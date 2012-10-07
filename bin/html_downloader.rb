@@ -7,19 +7,6 @@ require 'mechanize'
 
 load '../lib/link_extractor.rb'
 
-#Future
-blog_engine = 0 
-body_config = ""
-
-#URL Info
-base_url = "http://squid314.livejournal.com"
-next_page_script = "?skip="
-
-
-#Config
-max_entries = 10
-comment_section = false 
-
 #Other
 output_file = "test.html"
 
@@ -74,30 +61,10 @@ def write_file(page_url)
     file.write "<hr>"
   end
 end
-#crawl website
-#agent = Mechanize.new()
-#regex = ".subj-link"
-#puts agent.get(page_url).search(regex)#:w.map(&:text).map(&:strip)
 
-#get all links which lead to individual posts
-def get_link_list
-  regex = "a.subj-link"
-  link_list = []
-  starting_page = 0
-  max_pages = 1 
-
-  starting_page.upto(max_pages) do |count|
-    current_page = base_url + "/" + next_page_script + (count * 10).to_s
-    page = Nokogiri::HTML(open(current_page))
-    page.css(regex).each do |link|
-      link_list << link['href']
-    end
-  end
-  puts link_list
-end
 #open each page and write it to a file
 def write_to_file
-  link_list.each do |link|
+  site.link_list.each do |link|
     write_file(link)  
   end
 end
