@@ -69,29 +69,28 @@ def write_to_file
   end
 end
 
+#options = { page_url: 'http://tynan.com',
+  #max_entries: 20,
+  #next_page_matcher: "page/",
+  #post_matcher: "",
+  #starting_page: 1,
+  #starting_page_incrementor: 1 }
 
-#SETT Bloc
-#page_url = "http://sebastianmarshall.com"
-#max_entries = 20
-#next_page_matcher = "page/"
-#starting_page = 1
-#starting_page_incrementor = 1
-#post_matcher = ""
+#squid314 LJ
+options = { page_url: 'http://squid314.livejournal.com',
+  max_entries: 20,
+  next_page_matcher: "?skip=",
+  post_matcher: "td.caption a.subj-link",
+  starting_page: 0,
+  starting_page_incrementor: 10 }
 
-page_url = "http://squid314.livejournal.com"
-max_entries = 20
-next_page_matcher = "?skip="
-post_matcher = "td.caption a.subj-link"
-starting_page = 0
-starting_page_incrementor = 10
+#JEYC
+#options = { page_url: 'http://just-eat-your-cupcake.blogspot.com',
+  #max_entries: 20,
+  #next_page_matcher: "a.blog-pager-older-link",
+  #post_matcher: "h3.post-title.entry-title a",
+  #starting_page: -1,
+  #starting_page_incrementor: -1 }
 
-#page_url = "http://just-eat-your-cupcake.blogspot.com/"
-#max_entries = 20
-#next_page_matcher = "a.blog-pager-older-link"
-#post_matcher = "h3.post-title.entry-title a"
-#starting_page = -1
-#starting_page_incrementor = -1
-
-site = LinkExtractor.new(page_url, max_entries, post_matcher, next_page_matcher,
-                         starting_page, starting_page_incrementor)
+site = LinkExtractor.new(options)
 site.get_posts

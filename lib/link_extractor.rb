@@ -6,14 +6,13 @@ class LinkExtractor
 
   attr_reader :link_list
 
-  def initialize(page_url, max_entries=10, post_matcher, next_page_matcher,
-                 starting_page, starting_page_incrementor)
-    @page_url = page_url
-    @max_entries =  max_entries 
-    @post_matcher = post_matcher
-    @next_page_matcher = next_page_matcher
-    @starting_page = starting_page
-    @starting_page_incrementor = starting_page_incrementor
+  def initialize(opts = {})
+    @page_url = opts[:page_url]
+    @max_entries = opts[:max_entries]
+    @post_matcher = opts[:post_matcher]
+    @next_page_matcher = opts[:next_page_matcher]
+    @starting_page = opts[:starting_page]
+    @starting_page_incrementor = opts[:starting_page_incrementor]
     @link_list = []
   end
 
