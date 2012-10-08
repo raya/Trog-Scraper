@@ -1,5 +1,3 @@
-FactoryGirl.define do
-  factory :bad_site, class: LinkExtractor do
     ignore do
       page_url       "htt://randomgib.com"
       max_entries    -5
