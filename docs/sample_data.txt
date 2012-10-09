@@ -1,0 +1,25 @@
+#options = { page_url: 'http://tynan.com',
+#max_entries: 20,
+#next_page_matcher: "page/",
+#post_matcher: "",
+#starting_page: 1,
+#starting_page_incrementor: 1 }
+
+#squid314 LJ
+#options = { page_url: 'http://squid314.livejournal.com',
+#max_entries: 20,
+#next_page_matcher: "?skip=",
+#post_matcher: "td.caption a.subj-link",
+#starting_page: 0,
+#starting_page_incrementor: 10 }
+
+#JEYC
+#options = { page_url: 'http://just-eat-your-cupcake.blogspot.com',
+  #max_entries: 5,
+  #next_page_matcher: "a.blog-pager-older-link",
+  #post_matcher: "h3.post-title.entry-title a",
+  #starting_page: -1,
+  #starting_page_incrementor: -1 }
+
+ruby html_downloader.rb --url google.com --max 15 --next "div#try" --post "h3#title" --start 3 --inc 1
+

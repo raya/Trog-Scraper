@@ -1,11 +1,13 @@
-require 'nokogiri'
+#!/usr/bin/env ruby
+
 require 'open-uri'
 require 'rubygems'
 require 'securerandom'
-require 'mechanize'
+require 'optparse'
 
 load '../lib/link_extractor.rb'
 load '../lib/content_extractor.rb'
+load '../lib/parse_config.rb'
 
 def random_filename
   "temp_" + SecureRandom.hex(13) + ".html"
@@ -66,29 +68,9 @@ def create_toc(filename, index)
   end
 end
 
-#options = { page_url: 'http://tynan.com',
-#max_entries: 20,
-#next_page_matcher: "page/",
-#post_matcher: "",
-#starting_page: 1,
-#starting_page_incrementor: 1 }
-
-#squid314 LJ
-#options = { page_url: 'http://squid314.livejournal.com',
-#max_entries: 20,
-#next_page_matcher: "?skip=",
-#post_matcher: "td.caption a.subj-link",
-#starting_page: 0,
-#starting_page_incrementor: 10 }
-
-#JEYC
-options = { page_url: 'http://just-eat-your-cupcake.blogspot.com',
-  max_entries: 5,
-  next_page_matcher: "a.blog-pager-older-link",
-  post_matcher: "h3.post-title.entry-title a",
-  starting_page: -1,
-  starting_page_incrementor: -1 }
-
+options = {}
+options = ParseConfig.parse(ARGV)
+#puts "Performing task with options #{options.inspect}"
 site = LinkExtractor.new(options)
 site.get_posts
 puts "Calling html loader"
