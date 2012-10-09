@@ -22,4 +22,4 @@
   #starting_page_incrementor: -1 }
 
 ruby html_downloader.rb --url google.com --max 15 --next "div#try" --post "h3#title" --start 3 --inc 1
-
+ruby html_downloader.rb --url http://just-eat-your-cupcake.blogspot.com --max 5 --next "a.blog-pager-older-link" --post "h3.post-title.entry-title a" --start -1 --inc -1
