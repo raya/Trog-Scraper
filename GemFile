@@ -1,0 +1,11 @@
+source "http://rubygems.org"
+
+gem "nokogiri", "1.5.5"
+gem "ruby-readability", git: "https://github.com/iterationlabs/ruby-readability.git"
+
+group :test do
+  gem "rspec", "~>2.11"
+  gem "factory_girl"
+  gem "vcr", "2.2.5"
+  gem "webmock", "1.8.11"
+end

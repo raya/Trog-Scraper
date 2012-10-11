@@ -1,10 +1,5 @@
 #!/usr/bin/env ruby
 
-#require 'open-uri'
-#require 'rubygems'
-#require 'securerandom'
-require 'optparse'
-
 require_relative '../lib/content_extractor'
 require_relative '../lib/link_extractor'
 require_relative '../lib/parse_config'
