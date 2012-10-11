@@ -14,7 +14,8 @@ require_relative '../lib/parse_config'
 #load '../lib/parse_config.rb'
 
 def random_filename
-  "temp_" + SecureRandom.hex(13) + ".html"
+  filename = "temp_" + SecureRandom.hex(13) + ".html"
+  File.join('../temp', filename)
 end
 
 def write_html_headers(filename)
@@ -51,6 +52,7 @@ end
 
 def create_html_file(link_list)
   output_file = random_filename
+  puts "Writing to #{random_filename}"
   write_html_headers(output_file)
   create_toc(output_file, link_list.length)
   link_list.each_with_index do |link, index|
