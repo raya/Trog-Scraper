@@ -18,7 +18,7 @@ class LinkExtractor
 
   def get_next_page_url(current_page=@page_url)
     if search_via_css? 
-      page = Nokogiri::HTML(open(current_page))
+      page = open_page(current_page)
       next_page = page.css(@next_page_matcher)[0]['href']
     else
       @starting_page += @starting_page_incrementor
@@ -41,10 +41,19 @@ class LinkExtractor
 
   #Put links to main posts in array link_list
   def process_page(current_url)
-    current_page = Nokogiri::HTML(open(current_url))
+    current_page = open_page(current_url)
     current_page.css(@post_matcher).each do |link|
       link_list << link['href']
       break if link_list.length >= @max_entries
+    end
+  end
+
+  def open_page(url)
+    begin
+      page = Nokogiri::HTML(open(url))
+    rescue
+      puts "Unable to open page #{url}"
+      exit
     end
   end
 
