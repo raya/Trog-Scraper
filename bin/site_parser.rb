@@ -5,9 +5,13 @@ require 'rubygems'
 require 'securerandom'
 require 'optparse'
 
-load '../lib/link_extractor.rb'
-load '../lib/content_extractor.rb'
-load '../lib/parse_config.rb'
+require_relative '../lib/content_extractor'
+require_relative '../lib/link_extractor'
+require_relative '../lib/parse_config'
+
+#load '../lib/link_extractor.rb'
+#load '../lib/content_extractor.rb'
+#load '../lib/parse_config.rb'
 
 def random_filename
   "temp_" + SecureRandom.hex(13) + ".html"

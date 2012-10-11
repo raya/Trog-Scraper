@@ -18,11 +18,9 @@ class LinkExtractor
 
   def get_next_page_url(current_page=@page_url)
     if search_via_css? 
-      "Puts Searching CSS"
       page = Nokogiri::HTML(open(current_page))
       next_page = page.css(@next_page_matcher)[0]['href']
     else
-      puts "Searching URL"
       @starting_page += @starting_page_incrementor
       next_page = @page_url + "/" + @next_page_matcher + @starting_page.to_s
     end
@@ -48,8 +46,6 @@ class LinkExtractor
       link_list << link['href']
       break if link_list.length >= @max_entries
     end
-    puts "Current link_list: "
-    puts link_list
   end
 
   def post_limit_not_hit?

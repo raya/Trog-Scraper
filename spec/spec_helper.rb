@@ -1,2 +1,2 @@
-require 'webmock/rspec'
+#require 'webmock/rspec'
 require 'vcr'

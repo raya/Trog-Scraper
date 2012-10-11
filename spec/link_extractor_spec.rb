@@ -6,57 +6,66 @@ describe LinkExtractor do
 
   FactoryGirl.find_definitions
 
-  context "with a search via URL" do
-    before(:each) do
-      attributes = FactoryGirl.build(:url_search)
-      @site = LinkExtractor.new(attributes)
-    end
+  describe "searching via URL" do
 
-    describe "on a non-available page" do
-      it "should raise an error" do
-        expect { @site.get_posts }.to raise_error("URL not found")
+    context "all inputs are correct" do
+      before(:each) do
+        attributes = FactoryGirl.build(:url_search)
+        @max_entries = attributes[:max_entries]
+        @site = LinkExtractor.new(attributes)
       end
 
-      it "should get posts" do
-        @site.get_posts.should == "test"
+      it "should get the number of posts specified" do
+        @site.get_posts
+        @site.link_list.length.should == @max_entries 
       end
-
+      it "should return the correct URLs in the link_list array" 
     end
 
-    describe "on an available page" do
-
+    context "URL is inaccessible" do
+      it "should exit" do
+      end
     end
 
+    context "cannot find the next page" do
+      it "should return the first page of blog posts" do
+      end
+    end
+    context "posts cannot be found" do
+      it "should exit" do
+      end
+    end
   end
 
-  #context "with a search via CSS" do
-    #before(:each) do
-      #@site = FactoryGirl.build(:css_search)
-    #end
+  describe "searching via CSS" do
+    context "all inputs are correct" do
+      before(:each) do
+        attributes = FactoryGirl.build(:css_search)
+        @site = LinkExtractor.new(attributes)
+      end
 
-  #end
+      it "should get the number of posts specified" do
+        @site.get_posts
+        @site.link_list.length.should == 5
+      end
+      it "should return the correct URLs in the link_list array" 
+    end
 
-  #context "beginning attributes" do
-    #before(:each) do
-      #@site = FactoryGirl.build(:url_search)
-    #end
-    #subject { @site }
-    #it { should respond_to :link_list }
-    #it { should respond_to :get_posts }
-    #it { should respond_to :process_page }
-    #it { should respond_to :post_limit_not_hit? }
-    #it { should respond_to :get_next_page_url }
+    context "URL is inaccessible" do
+      it "should exit" do
+      end
+    end
 
-    #it "has an empty array initialized at the start" do
-      #@site.link_list.should == []
-    #end
-
-    #it "will search via query string when page incrementor isn't set" do
-      #@site.search_via_css?.should be_false
-    #end
-
-
-  #end
+    context "cannot find the next page" do
+      it "should return the first page of blog posts" do
+      end
+    end
+    
+    context "posts cannot be found" do
+      it "should exit" do
+      end
+    end
+  end
 
 
 end
