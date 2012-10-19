@@ -7,11 +7,12 @@ module TrogScraper
 
     def self.random_filename
       filename = "temp_" + SecureRandom.hex(13) + ".html"
-      File.join('../temp', filename)
+      File.join('temp', filename)
     end
 
     def self.write_html_headers(filename)
       puts "Writing to #{filename}"
+      puts Dir.pwd
       File.open(filename, "w") do |file|
         file.write "<html><head><title> Kindle Document </title> <meta http-equiv
         =\"Content-Type\" content=\"text/html;charset=utf-8\" /></head><body>"
