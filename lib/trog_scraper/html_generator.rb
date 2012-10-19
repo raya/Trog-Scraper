@@ -12,7 +12,6 @@ module TrogScraper
 
     def self.write_html_headers(filename)
       puts "Writing to #{filename}"
-      puts Dir.pwd
       File.open(filename, "w") do |file|
         file.write "<html><head><title> Kindle Document </title> <meta http-equiv
         =\"Content-Type\" content=\"text/html;charset=utf-8\" /></head><body>"
