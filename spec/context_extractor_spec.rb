@@ -1,5 +1,5 @@
 require 'ruby-readability'
-require 'content_extractor'
+require 'trog_scraper/content_extractor'
 
 module TrogScraper
   describe ContentExtractor do

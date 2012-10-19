@@ -1,4 +1,4 @@
-require 'link_extractor'
+require 'trog_scraper/link_extractor'
 require 'spec_helper'
 require 'factory_girl'
 require 'support/vcr_setup'
