@@ -1,6 +1,6 @@
 require 'factory_girl'
 FactoryGirl.define do
-  factory :url_search, class: LinkExtractor do
+  factory :url_search, class: TrogScraper::LinkExtractor do
       page_url       "http://squid314.livejournal.com"
       max_entries    5 
       post_matcher   "td.caption a.subj-link"
@@ -10,7 +10,7 @@ FactoryGirl.define do
     initialize_with { attributes }
 
   end
-  factory :css_search, class: LinkExtractor do
+  factory :css_search, class: TrogScraper::LinkExtractor do
       page_url       "http://googlereader.blogspot.com/"
       max_entries    10
       post_matcher   "h3.post-title a"
@@ -21,7 +21,7 @@ FactoryGirl.define do
   end
 
   #blog with one page which dynamically loads posts
-  factory :css_search_dynamic, class: LinkExtractor do
+  factory :css_search_dynamic, class: TrogScraper::LinkExtractor do
       page_url       "http://googleblog.blogspot.com/"
       max_entries    10
       post_matcher   "li.post h2.title a"
