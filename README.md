@@ -1,4 +1,4 @@
-Website2Mobi
+Trog Scraper
 ============
 
 A ruby program which has will grab blog posts and write them to an .html file formatted for Amazon's kindlegen program.
