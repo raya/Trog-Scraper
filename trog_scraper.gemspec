@@ -1,6 +1,6 @@
 Gem::Specification.new do |s| 
-  s.name         = "Trog Scraper"
-  s.version      = "0.01"
+  s.name         = "Trog_Scraper"
+  s.version      = "0.0.1"
   s.author       = "Raya Desawade"
   s.email        = "rayalynn@gmail.com"
   s.summary      = "Scrapes the content of a website using Nokogiri and
